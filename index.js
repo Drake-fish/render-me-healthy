@@ -11,7 +11,7 @@ require('./models/User');
 require('./services/passport');
 
 //connect mongoose for mongodb give it the keys
-mongoose.connect(keys.mongoConfig);
+mongoose.connect(keys.mongoConfig,{ useNewUrlParser: true } );
 
 //instanciate the express server
 const app = express();
