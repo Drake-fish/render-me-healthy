@@ -13,7 +13,7 @@ module.exports = app => {
 		'/auth/google/callback',
 		passport.authenticate('google'),
 		(req, res) => {
-			res.redirect('/');
+			res.redirect('/main');
 		}
 	);
 	//log the user out and redirect them to the home page

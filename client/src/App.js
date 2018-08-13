@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './actions';
 import Landing from './components/Landing';
+import Header from './components/Header';
 
 class App extends Component {
 	componentDidMount() {
@@ -11,6 +12,7 @@ class App extends Component {
 	render() {
 		return (
 			<div>
+				<Header/>
 				<BrowserRouter>
 					<div>
 						<Route path="/" component={Landing} exact />
