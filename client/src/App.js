@@ -5,6 +5,7 @@ import * as actions from './actions';
 import Landing from './components/Landing';
 import Header from './components/Header';
 import Home from './components/Home';
+import Recipies from './components/Recipies';
 
 class App extends Component {
 	componentDidMount() {
@@ -18,6 +19,7 @@ class App extends Component {
 					<div>
 						<Route path="/" component={Landing} exact />
 						<Route path="/main" component={Home} exact/>
+						<Route path="/search-recipies" component={Recipies} exact/>
 					</div>
 				</BrowserRouter>
 			</div>

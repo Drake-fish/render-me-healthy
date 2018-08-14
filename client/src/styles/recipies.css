@@ -1,0 +1,28 @@
+.recipe-container {
+  width: 100%;
+  background: #e6e6e6;
+  margin: 1rem 0;
+}
+
+.recipe-image-container {
+  width: 25%;
+  display: inline-block;
+}
+
+.recipe-image-container img {
+  width: 100%;
+}
+
+.recipe-info-container {
+  width: 75%;
+  display: inline-block;
+  float: right;
+}
+
+.recipe-info-container h3 {
+  padding: 0;
+  text-align: left;
+  padding-left: 1rem;
+  font-size: 23px;
+  padding-top: 10px;
+}

@@ -8,7 +8,10 @@
 		},
 		"/api/*": {
 			"target": "http://localhost:5000"
-		}
+    },
+    "/recipies/*":{
+      "target": "http://localhost:5000"
+    }
 	},
   "dependencies": {
     "axios": "^0.18.0",

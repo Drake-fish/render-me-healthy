@@ -7,16 +7,16 @@ const keys = require('./config/keys');
 //Require in our models and services
 require('./models/User');
 
-
 require('./services/passport');
 
 //connect mongoose for mongodb give it the keys
-mongoose.connect(keys.mongoConfig,{ useNewUrlParser: true } );
+mongoose.connect(keys.mongoConfig, { useNewUrlParser: true });
 
 //instanciate the express server
 const app = express();
 
 //middleware below
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(
 	cookieSession({
@@ -29,8 +29,7 @@ app.use(passport.session());
 
 //immediately calling the authRoutes file and passing it app!!
 require('./routes/authRoutes')(app);
-// require('./routes/billingRoutes')(app);
-// require('./routes/surveyRoutes')(app);
+require('./routes/recipieRoutes')(app);
 
 //code to ensure that express works correctly in production
 if (process.env.NODE_ENV === 'production') {

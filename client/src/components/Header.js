@@ -26,7 +26,7 @@ class Header extends Component {
               Main
             </li>
           </a>,
-          <a href='/recipies'>
+          <a href='/search-recipies'>
             <li onClick={this.toggleMenu} key='recipies'>
               Recipies
             </li>

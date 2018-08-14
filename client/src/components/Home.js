@@ -5,7 +5,7 @@ import Card from './Card';
 
 import '../styles/home.css';
 
-const buttons=[{name:'Menu', link:'/menu'},{name:'Recipies', link:'/recipies'},{name:'Build', link:'/build'},{name:'Shopping List', link:'/shopping-list'}];
+const buttons=[{name:'Menu', link:'/menu'},{name:'Recipies', link:'/search-recipies'},{name:'Build', link:'/build'},{name:'Shopping List', link:'/shopping-list'}];
 class Home extends Component {
     
     renderMenuOptions(){
