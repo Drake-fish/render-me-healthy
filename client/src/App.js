@@ -6,6 +6,7 @@ import Landing from './components/Landing';
 import Header from './components/Header';
 import Home from './components/Home';
 import Recipies from './components/Recipies';
+import Menu from './components/Menu';
 
 class App extends Component {
 	componentDidMount() {
@@ -14,12 +15,13 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<Header/>
+				<Header />
 				<BrowserRouter>
 					<div>
 						<Route path="/" component={Landing} exact />
-						<Route path="/main" component={Home} exact/>
-						<Route path="/search-recipies" component={Recipies} exact/>
+						<Route path="/main" component={Home} exact />
+						<Route path="/search-recipies" component={Recipies} exact />
+						<Route path="/menu" component={Menu} exact />
 					</div>
 				</BrowserRouter>
 			</div>

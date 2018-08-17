@@ -26,3 +26,61 @@
   font-size: 23px;
   padding-top: 10px;
 }
+
+.saving-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1;
+  width: 100%;
+  background: rgba(0, 0, 0, .5);
+}
+
+.saving-screen, .confirmation-container {
+  width: 300px;
+  margin: 0 auto;
+  position: fixed;
+  top: -150px;
+  left: -150px;
+  z-index: 2;
+  margin-left: 50%;
+  margin-top: 50%;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 6px 0px black;
+  transition: .3s ease-in-out;
+}
+
+.confirm-title {
+  font-size: 1rem;
+}
+
+.saving-recipe-title {
+  text-align: center;
+}
+
+.save-buttons {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+select {
+  display: block;
+  margin: 0 auto;
+}
+
+.confirm-button {
+  width: 80px;
+  height: 35px;
+  background: black;
+  display: inline-block;
+  border: 1px solid black;
+  color: white;
+  font-size: 1rem;
+  margin-right: 1rem;
+  transition: .3s ease-in-out;
+  cursor: pointer;
+}

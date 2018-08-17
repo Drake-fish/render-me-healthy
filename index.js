@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 //Require in our models and services
 require('./models/User');
+require('./models/Recipe');
+require('./models/Ingredient');
+require('./models/Menu');
 
 require('./services/passport');
 
@@ -30,6 +33,7 @@ app.use(passport.session());
 //immediately calling the authRoutes file and passing it app!!
 require('./routes/authRoutes')(app);
 require('./routes/recipieRoutes')(app);
+require('./routes/menuRoutes')(app);
 
 //code to ensure that express works correctly in production
 if (process.env.NODE_ENV === 'production') {
