@@ -34,6 +34,7 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/recipieRoutes')(app);
 require('./routes/menuRoutes')(app);
+require('./routes/shoppingListRoutes')(app);
 
 //code to ensure that express works correctly in production
 if (process.env.NODE_ENV === 'production') {

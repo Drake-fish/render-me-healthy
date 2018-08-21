@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchRecipies, fetchMenu, triggerRecipeSave } from '../actions';
+import { fetchRecipies, fetchMenu, handleRecipe } from '../actions';
 import HeroImage from './HeroImage';
 import RecipeSearch from './recipeComponents/RecipeSearch';
 import Recipe from './recipeComponents/Recipe';
@@ -41,7 +41,7 @@ class Recipies extends Component {
 					<RecipeSavingModule
 						recipe={this.state.recipe}
 						toggleSaveModule={this.toggleSaveModule}
-						triggerRecipeSave={this.props.triggerRecipeSave}
+						triggerRecipeSave={this.props.handleRecipe}
 						fetchMenu={this.props.fetchMenu}
 						menu={this.props.menu}
 					/>
@@ -61,5 +61,5 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
 	fetchRecipies,
 	fetchMenu,
-	triggerRecipeSave
+	handleRecipe
 })(Recipies);

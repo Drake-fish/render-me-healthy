@@ -33,13 +33,20 @@ module.exports = app => {
 
 	//save recipe to menu
 	app.post('/api/menu/update', requireLogin, async (req, res) => {
-		const recipe = new Recipe({
-			title: req.body.recipe.title,
-			image: req.body.recipe.image,
-			ingredients: req.body.recipe.ingredients,
-			link: req.body.recipe.link,
-			_user: req.user.id
-		});
+		let recipe;
+		if (req.body.recipe) {
+			console.log('recipe provided adding! ', req.body);
+			recipe = new Recipe({
+				title: req.body.recipe.title,
+				image: req.body.recipe.image,
+				ingredients: req.body.recipe.ingredients,
+				link: req.body.recipe.link,
+				_user: req.user.id
+			});
+		} else {
+			console.log('no recipe assigned removing recipe');
+			recipe = null;
+		}
 
 		const menu = await Menu.updateOne(
 			{
@@ -49,6 +56,7 @@ module.exports = app => {
 				$set: { [req.body.day]: recipe }
 			}
 		);
+		console.log('Added to the menu at database ', menu);
 		res.status(200).send(menu);
 	});
 

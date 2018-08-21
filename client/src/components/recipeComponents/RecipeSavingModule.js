@@ -27,6 +27,7 @@ class RecipeSavingModule extends Component {
 				},
 				day: this.state.value
 			});
+			this.props.toggleSaveModule();
 			return;
 		}
 		if (this.props.menu[this.state.value]) {
@@ -41,6 +42,7 @@ class RecipeSavingModule extends Component {
 				},
 				day: this.state.value
 			});
+			this.props.toggleSaveModule();
 		}
 	};
 
@@ -55,6 +57,8 @@ class RecipeSavingModule extends Component {
 			},
 			day: this.state.value
 		});
+		this.toggleConfirmation();
+		this.props.toggleSaveModule();
 	};
 
 	renderContent = () => {

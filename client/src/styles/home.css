@@ -1,20 +1,27 @@
-.home-buttons{
-    margin-top:-4rem;
+.home-buttons {
+  margin-top: -4rem;
 }
-.card{
-    width: 45%;
-    display: inline-block;
-    margin-left: 3%;
-    box-shadow: 2px 1px 15px 0px grey;
-    margin-top: 10px;
-    background: white;
-    transition: .3s ease-in-out;
+
+.card {
+  width: 45%;
+  display: inline-block;
+  margin-left: 3%;
+  box-shadow: 2px 1px 15px 0px grey;
+  margin-top: 10px;
+  background: white;
+  transition: .3s ease-in-out;
 }
-.card:hover{
-    background:#589632;
-    color:white;
+
+.card:hover {
+  background: #589632;
+  color: white;
 }
-.card-title{
-    margin:4rem 0;
-    font-size:1.2rem;
+
+.card-title {
+  margin: 4rem 0;
+  font-size: 1.2rem;
+}
+
+.card4 {
+  width: 93%;
 }

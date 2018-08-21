@@ -8,17 +8,18 @@ import '../styles/home.css';
 
 const buttons = [
 	{ name: 'Menu', link: '/menu' },
-	{ name: 'Recipies', link: '/search-recipies' },
-	{ name: 'Build', link: '/build' },
-	{ name: 'Shopping List', link: '/shopping-list' }
+	{ name: 'Discover', link: '/search-recipies' },
+	{ name: 'Saved', link: '/saved-recipies' },
+	{ name: 'Shopping List', link: '/shopping-list' },
+	{ name: 'Build', link: '/build' }
 ];
 class Home extends Component {
 	componentDidMount() {
 		this.props.createMenu();
 	}
 	renderMenuOptions() {
-		return buttons.map(button => {
-			return <Card name={button.name} link={button.link} />;
+		return buttons.map((button, i) => {
+			return <Card i={i} name={button.name} link={button.link} />;
 		});
 	}
 	render() {

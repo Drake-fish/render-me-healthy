@@ -4,7 +4,7 @@ import HeroImage from './HeroImage';
 import WeekMenu from './menuComponents/WeekMenu';
 import DailyRecipe from './menuComponents/DailyRecipe';
 import moment from 'moment';
-import { changeDay, fetchMenu } from '../actions';
+import { changeDay, fetchMenu, deleteDay } from '../actions';
 
 import '../styles/menu.css';
 
@@ -53,6 +53,8 @@ class Menu extends Component {
 				/>
 				<WeekMenu day={this.props.day} changeDay={this.changeDay} />
 				<DailyRecipe
+					day={this.props.day}
+					removeDay={this.props.deleteDay}
 					recipe={this.props.menu ? this.props.menu[this.props.day] : null}
 				/>
 			</div>
@@ -67,4 +69,6 @@ function mapStateToProps(state) {
 		menu: state.menu.menu
 	};
 }
-export default connect(mapStateToProps, { changeDay, fetchMenu })(Menu);
+export default connect(mapStateToProps, { changeDay, fetchMenu, deleteDay })(
+	Menu
+);

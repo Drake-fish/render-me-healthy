@@ -20,11 +20,17 @@ class Header extends Component {
 				);
 			default:
 				return [
-					<a key="menu" href="/main">
+					<a key="main" href="/main">
 						<li onClick={this.toggleMenu}>Main</li>
 					</a>,
-					<a key="recipies" href="/search-recipies">
-						<li onClick={this.toggleMenu}>Recipies</li>
+					<a key="menu" href="/menu">
+						<li onClick={this.toggleMenu}>Menu</li>
+					</a>,
+					<a key="search-recipies" href="/search-recipies">
+						<li onClick={this.toggleMenu}>Search Recipies</li>
+					</a>,
+					<a key="saved" href="/saved-recipies">
+						<li onClick={this.toggleMenu}>Saved Recipies</li>
 					</a>,
 					<a key="build" href="/build">
 						<li onClick={this.toggleMenu}>Build Menu</li>

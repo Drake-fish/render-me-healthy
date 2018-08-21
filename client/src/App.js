@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Recipies from './components/Recipies';
 import Menu from './components/Menu';
+import ShoppingList from './components/ShoppingList';
 
 class App extends Component {
 	componentDidMount() {
@@ -22,6 +23,7 @@ class App extends Component {
 						<Route path="/main" component={Home} exact />
 						<Route path="/search-recipies" component={Recipies} exact />
 						<Route path="/menu" component={Menu} exact />
+						<Route path="/shopping-list" component={ShoppingList} exact />
 					</div>
 				</BrowserRouter>
 			</div>

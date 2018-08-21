@@ -1,6 +1,8 @@
 import React from 'react';
 
-const DailyRecipe = ({ recipe }) => {
+const DailyRecipe = ({ recipe, day, removeDay }) => {
+	console.log(recipe);
+
 	this.renderRecipe = () => {
 		if (!recipe) {
 			return (
@@ -14,6 +16,9 @@ const DailyRecipe = ({ recipe }) => {
 			<div>
 				<img src={recipe ? recipe.image : null} alt="recipe" />
 				<span>{recipe ? recipe.title : null}</span>
+				<button onClick={() => removeDay({ recipe: null, day: day })}>
+					Remove
+				</button>
 			</div>
 		);
 	};

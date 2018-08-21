@@ -1,15 +1,26 @@
 import axios from 'axios';
 import { FETCH_USER, FETCH_RECIPIES, CHANGE_DAY, FETCH_MENU } from './types';
 
-//SAME THING ABOVE BELOW IS REFACTORED
+//user actions
 export const fetchUser = () => async dispatch => {
 	const res = await axios.get('/api/current_user');
 	dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const changeDay = day => async dispatch => {
-	console.log('day at reducer', day);
-	dispatch({ type: CHANGE_DAY, payload: day });
+//menu actions
+export const handleRecipe = data => async dispatch => {
+	//set the loading state to true
+	if (data.day > 6) {
+		console.log('Not doing all the menu stuff');
+		dispatch(this.saveRecipe(data.recipe));
+	} else {
+		//update a menu day
+		dispatch(this.assignDay(data));
+		//save the recipe to the database
+		dispatch(this.saveRecipe(data.recipe));
+	}
+
+	//change loading to false when loop completes
 };
 
 export const createMenu = () => async dispatch => {
@@ -17,20 +28,12 @@ export const createMenu = () => async dispatch => {
 };
 
 export const assignDay = data => async dispatch => {
+	console.log('Assigning day', data);
 	await axios.post('/api/menu/update', data);
 };
 
-export const triggerRecipeSave = data => dispatch => {
-	if (data.day > 6) {
-		console.log('NOT ASSIGNING TO A DAY HERE: ', data.recipe);
-		dispatch(saveRecipe(data.recipe));
-		dispatch(this.fetchMenu());
-		return;
-	}
-	console.log('ASSIGING TO A DAY HERE: ', data);
-	dispatch(saveRecipe(data.recipe));
-	dispatch(this.assignDay(data));
-	dispatch(this.fetchMenu());
+export const changeDay = day => async dispatch => {
+	dispatch({ type: CHANGE_DAY, payload: day });
 };
 
 export const fetchMenu = () => async dispatch => {
@@ -38,38 +41,49 @@ export const fetchMenu = () => async dispatch => {
 	dispatch({ type: FETCH_MENU, payload: res.data });
 };
 
+export const deleteDay = data => async dispatch => {
+	await axios.post('/api/menu/update', data);
+	dispatch(this.fetchMenu());
+};
+
+//recipe actions
+
 export const fetchRecipies = query => async dispatch => {
 	const res = await axios.post('/recipies', query);
 	dispatch({ type: FETCH_RECIPIES, payload: res.data });
 };
 
 export const saveRecipe = recipe => async dispatch => {
+	console.log('Saving Recipe Action ', recipe);
 	await axios.post('/recipies/save', recipe);
 };
 
-// export const handleToken = token => async dispatch => {
-// 	const res = await axios.post('/api/stripe', token);
-// 	dispatch({ type: FETCH_USER, payload: res.data });
-// };
+//shopping list actions
 
-// export const submitSurveys = (values, history) => async dispatch => {
-// 	const res = await axios.post('/api/surveys', values);
+export const checkIngredient = ingredient => async dispatch => {
+	console.log('Checking Ingredient Redux ', ingredient);
+	const ingredientExists = await axios.post(
+		'/api/shopping-list/check',
+		ingredient
+	);
+	return ingredientExists;
+};
 
-// 	// history.push('/surveys');
-// 	dispatch({ type: FETCH_USER, payload: res.data });
-// };
-// export const searchSurveys = query => async dispatch => {
-// 	let res;
-// 	if (query.query !== '') {
-// 		res = await axios.post('/api/search', query);
-// 	} else {
-// 		res = await axios.get('/api/surveys');
-// 	}
+export const saveIngredient = ingredient => async dispatch => {
+	console.log('Saving the ingredient to the database ', ingredient);
+	const savedIngredient = await axios.post(
+		'/api/shopping-list/save',
+		ingredient
+	);
+	return savedIngredient;
+};
 
-// 	dispatch({ type: FETCH_SURVEYS, payload: res.data });
-// };
-
-// export const fetchSurveys = () => async dispatch => {
-// 	const res = await axios.get('/api/surveys');
-// 	dispatch({ type: FETCH_SURVEYS, payload: res.data });
-// };
+export const updateIngredient = ingredient => async dispatch => {
+	console.log('Updating the ingredient in the database ', ingredient);
+	const updatedIngredient = await axios.put(
+		'/api/shopping-list/update',
+		ingredient
+	);
+	console.log('ingredient updated!! ', updatedIngredient);
+	return updatedIngredient;
+};

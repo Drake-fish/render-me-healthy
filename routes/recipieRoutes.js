@@ -49,24 +49,36 @@ module.exports = app => {
 		}
 	});
 
-	//save ingridence for that recipe
-	app.post('/ingredient/save', requireLogin, async (req, res) => {});
-	//create a new menu for a user.
-
-	//remove a recipe.
+	//remove a recipe
 	app.delete('/recipe/delete', requireLogin, async (req, res) => {
-		const { id } = req.body;
+		const { image } = req.body;
 
-		Recipe.findByIdAndRemove(id, (err, recipe) => {
-			if (err) return res.status(500).send(err);
-			const response = {
-				message: 'Recipe successfully removed'
-			};
-			return res.status(200).send(response);
-		});
+		Recipe.findOneAndRemove(
+			{ _user: req.user.id, image: image },
+			(err, recipe) => {
+				if (err) return res.status(500).send(err);
+				const response = {
+					message: 'Recipe successfully removed'
+				};
+				return res.status(200).send(response);
+			}
+		);
 	});
 
-	app.delete('/menu/day/delete', requireLogin, async (req, res) => {});
+	//get a recipe by image url
 
-	app.delete('/ingredient/delete', requireLogin, async (req, res) => {});
+	app.get('/recpie/get', requireLogin, async (req, res) => {
+		const { image } = req.body;
+
+		const recipe = await Recipe.findOne({
+			_user: req.user.id,
+			image
+		});
+		res.send(recipe);
+	});
+
+	app.get('/recipe/all', requireLogin, async (req, res) => {
+		const recipes = await Recipe.find({ _user: req.user.id });
+		res.send(recipes);
+	});
 };
