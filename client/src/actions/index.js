@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_RECIPIES, CHANGE_DAY, FETCH_MENU } from './types';
+import {
+	FETCH_USER,
+	FETCH_RECIPIES,
+	CHANGE_DAY,
+	FETCH_MENU,
+	FETCH_SAVED_RECIPIES
+} from './types';
 
 //user actions
 export const fetchUser = () => async dispatch => {
@@ -56,6 +62,12 @@ export const fetchRecipies = query => async dispatch => {
 export const saveRecipe = recipe => async dispatch => {
 	console.log('Saving Recipe Action ', recipe);
 	await axios.post('/recipies/save', recipe);
+};
+
+export const getSavedRecipies = () => async dispatch => {
+	const res = await axios.get('/recipe/all');
+	console.log('Response from all saved recipies', res);
+	dispatch({ type: FETCH_SAVED_RECIPIES, payload: res.data });
 };
 
 //shopping list actions

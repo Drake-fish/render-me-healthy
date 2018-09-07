@@ -8,7 +8,9 @@ const Recipe = ({ recipe, savingModule }) => {
 			</div>
 			<div className="recipe-info-container">
 				<h3 className="recipe-name">{recipe.label}</h3>
-				<span onClick={() => savingModule(recipe)}>SAVE</span>
+				{savingModule ? (
+					<span onClick={() => savingModule(recipe)}>SAVE</span>
+				) : null}
 			</div>
 		</div>
 	);

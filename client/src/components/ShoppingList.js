@@ -14,13 +14,12 @@ class ShoppingList extends Component {
 	renderContent() {
 		const result = _.map(this.props.menu, (value, key) => {
 			if (value) {
-				return <Ingredient data={value.ingredients} />;
+				return <Ingredient key={key} data={value.ingredients} />;
 			}
 		});
 		return result;
 	}
 	render() {
-		console.log(this.props.menu);
 		return (
 			<div>
 				<h3>Shopping List</h3>

@@ -5,6 +5,7 @@ import HeroImage from './HeroImage';
 import RecipeSearch from './recipeComponents/RecipeSearch';
 import Recipe from './recipeComponents/Recipe';
 import RecipeSavingModule from './recipeComponents/RecipeSavingModule';
+import Loader from './Loader';
 
 import '../styles/recipies.css';
 
@@ -46,7 +47,7 @@ class Recipies extends Component {
 						menu={this.props.menu}
 					/>
 				) : null}
-				{this.props.recipies ? this.renderRecipies() : null}
+				{this.props.recipies ? this.renderRecipies() : <Loader />}
 			</div>
 		);
 	}
@@ -54,7 +55,7 @@ class Recipies extends Component {
 
 function mapStateToProps(state) {
 	return {
-		recipies: state.recipies,
+		recipies: state.recipies.recipies,
 		menu: state.menu.menu
 	};
 }

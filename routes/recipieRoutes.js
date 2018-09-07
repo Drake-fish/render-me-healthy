@@ -78,6 +78,7 @@ module.exports = app => {
 	});
 
 	app.get('/recipe/all', requireLogin, async (req, res) => {
+		console.log('getting saved recipies');
 		const recipes = await Recipe.find({ _user: req.user.id });
 		res.send(recipes);
 	});

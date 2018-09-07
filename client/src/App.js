@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Recipies from './components/Recipies';
 import Menu from './components/Menu';
 import ShoppingList from './components/ShoppingList';
+import SavedRecipies from './components/SavedRecipies';
 
 class App extends Component {
 	componentDidMount() {
@@ -24,6 +25,7 @@ class App extends Component {
 						<Route path="/search-recipies" component={Recipies} exact />
 						<Route path="/menu" component={Menu} exact />
 						<Route path="/shopping-list" component={ShoppingList} exact />
+						<Route path="/saved-recipies" component={SavedRecipies} exact />
 					</div>
 				</BrowserRouter>
 			</div>

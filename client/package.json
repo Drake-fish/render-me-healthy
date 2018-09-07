@@ -11,6 +11,9 @@
 		},
 		"/recipies/*": {
 			"target": "http://localhost:5000"
+		},
+		"/recipe/*": {
+			"target": "http://localhost:5000"
 		}
 	},
 	"dependencies": {

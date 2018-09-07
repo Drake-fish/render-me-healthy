@@ -1,9 +1,11 @@
-import { FETCH_RECIPIES } from '../actions/types';
+import { FETCH_RECIPIES, FETCH_SAVED_RECIPIES } from '../actions/types';
 
-export default function(state = null, action) {
+export default function(state = { recipies: null, saved: null }, action) {
 	switch (action.type) {
 		case FETCH_RECIPIES:
-			return action.payload || false;
+			return { ...state, recipies: action.payload };
+		case FETCH_SAVED_RECIPIES:
+			return { ...state, saved: action.payload };
 		default:
 			return state;
 	}
