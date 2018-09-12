@@ -70,6 +70,25 @@ export const getSavedRecipies = () => async dispatch => {
 	dispatch({ type: FETCH_SAVED_RECIPIES, payload: res.data });
 };
 
+export const deleteSavedRecipe = image => async dispatch => {
+	try {
+		const res = await axios.post('/recipe/delete', image);
+		dispatch(this.getSavedRecipies());
+	} catch (err) {
+		// catches errors both in fetch and response.json
+		console.log(err);
+	}
+};
+
+export const saveDbRecipe = recipe => async dispatch => {
+	console.log('Recipe at redux', recipe);
+	try {
+		const res = await axios.post('/recipe/saveDbRecipe', recipe);
+	} catch (err) {
+		console.log(err);
+	}
+};
+
 //shopping list actions
 
 export const checkIngredient = ingredient => async dispatch => {

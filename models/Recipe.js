@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const recipeSchema = new Schema({
-	title: String,
+	label: String,
 	image: String,
 	ingredients: Array,
 	link: String,

@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchRecipies, fetchMenu, handleRecipe } from '../actions';
+import {
+	fetchRecipies,
+	fetchMenu,
+	handleRecipe,
+	saveDbRecipe
+} from '../actions';
 import HeroImage from './HeroImage';
 import RecipeSearch from './recipeComponents/RecipeSearch';
 import Recipe from './recipeComponents/Recipe';
 import RecipeSavingModule from './recipeComponents/RecipeSavingModule';
 import Loader from './Loader';
+import AddRecipeModule from './recipeComponents/AddRecipeModule';
 
 import '../styles/recipies.css';
 
 class Recipies extends Component {
-	state = { saving: false, recipe: null };
+	state = { saving: false, recipe: null, addRecipe: false };
 	componentDidMount() {
-		this.props.fetchRecipies({ query: 'chicken' });
+		// this.props.fetchRecipies({ query: 'chicken' });
 	}
 	fetchRecipies = query => {
 		console.log('Fetching recipies', query);
@@ -29,15 +35,22 @@ class Recipies extends Component {
 			);
 		});
 	}
+	toggleAddRecipeModule = () => {
+		this.setState({ addRecipe: !this.state.addRecipe });
+	};
 	render() {
-		console.log('THIS IS THE MENU THAT WAS RETRIEVED', this.props.menu);
 		return (
 			<div className="recipie-page">
 				<HeroImage
 					image="https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1d992c355cbbe3f02ddc5f762f2ada73&auto=format&fit=crop&w=1100&q=80"
 					title="Recipies"
 				/>
+				<button onClick={this.toggleAddRecipeModule}>Add Recipe</button>
 				<RecipeSearch fetchRecipies={this.fetchRecipies} />
+				{this.state.addRecipe ? (
+					<AddRecipeModule saveRecipe={this.props.saveDbRecipe} />
+				) : null}
+
 				{this.state.saving ? (
 					<RecipeSavingModule
 						recipe={this.state.recipe}
@@ -62,5 +75,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
 	fetchRecipies,
 	fetchMenu,
-	handleRecipe
+	handleRecipe,
+	saveDbRecipe
 })(Recipies);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSavedRecipies } from '../actions';
+import { getSavedRecipies, deleteSavedRecipe } from '../actions';
 import HeroImage from './HeroImage';
 import Recipe from './recipeComponents/Recipe';
 import Loader from './Loader';
@@ -13,10 +13,17 @@ class SavedRecipies extends Component {
 	}
 	renderRecipies = () => {
 		return this.props.recipies.map(recipe => {
-			return <Recipe key={recipe._id} recipe={recipe} />;
+			return (
+				<Recipe
+					key={recipe._id}
+					deleteRecipe={this.props.deleteSavedRecipe}
+					recipe={recipe}
+				/>
+			);
 		});
 	};
 	render() {
+		console.log(this.props.deleteSavedRecipe);
 		return (
 			<div className="saved-recipies-page">
 				<HeroImage
@@ -34,4 +41,7 @@ function mapStateToProps(state) {
 		recipies: state.recipies.saved
 	};
 }
-export default connect(mapStateToProps, { getSavedRecipies })(SavedRecipies);
+export default connect(mapStateToProps, {
+	getSavedRecipies,
+	deleteSavedRecipe
+})(SavedRecipies);

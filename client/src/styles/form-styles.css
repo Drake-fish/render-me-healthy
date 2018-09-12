@@ -1,0 +1,27 @@
+button:disabled {
+  background: #dddddd;
+}
+
+.save-db-recipe-module {
+  width: 85%;
+  margin: 0 auto;
+  box-shadow: 1px 2px 5px black;
+  padding: 1rem;
+}
+
+input {
+  display: block;
+  width: 85%;
+  margin: 0 auto;
+  padding: .3rem;
+  margin-bottom: .5rem;
+}
+
+label {
+  margin-left: 20px;
+}
+
+select {
+  width: 88%;
+  margin: .5rem;
+}

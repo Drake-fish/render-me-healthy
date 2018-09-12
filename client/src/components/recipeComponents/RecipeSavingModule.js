@@ -20,7 +20,7 @@ class RecipeSavingModule extends Component {
 		if (this.state.value > 6) {
 			this.props.triggerRecipeSave({
 				recipe: {
-					title: recipe.label,
+					label: recipe.label,
 					image: recipe.image,
 					ingredients: recipe.ingredients,
 					link: recipe.url
@@ -35,7 +35,7 @@ class RecipeSavingModule extends Component {
 		} else {
 			this.props.triggerRecipeSave({
 				recipe: {
-					title: recipe.label,
+					label: recipe.label,
 					image: recipe.image,
 					ingredients: recipe.ingredients,
 					link: recipe.url
@@ -50,7 +50,7 @@ class RecipeSavingModule extends Component {
 		const { recipe } = this.props;
 		this.props.triggerRecipeSave({
 			recipe: {
-				title: recipe.label,
+				label: recipe.label,
 				image: recipe.image,
 				ingredients: recipe.ingredients,
 				link: recipe.url

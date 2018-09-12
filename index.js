@@ -9,6 +9,7 @@ require('./models/User');
 require('./models/Recipe');
 require('./models/Ingredient');
 require('./models/Menu');
+require('./models/NewRecipe');
 
 require('./services/passport');
 
