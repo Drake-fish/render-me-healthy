@@ -16,30 +16,32 @@ class RecipeSavingModule extends Component {
 	//function that runs when yes button is selected.
 	saveRecipe = () => {
 		const { recipe } = this.props;
+		const recipeObj = {
+			label: recipe.label,
+			cookTime: recipe.cookTime,
+			prepTime: recipe.prepTime,
+			steps: recipe.steps,
+			serves: recipe.serves,
+			category: recipe.category,
+			image: recipe.image,
+			ingredients: recipe.ingredients
+		};
+		//only save the recipe don't assign to the menu
 		console.log('TRIGGERING RECIPE SAVE HERE!', recipe);
 		if (this.state.value > 6) {
 			this.props.triggerRecipeSave({
-				recipe: {
-					label: recipe.label,
-					image: recipe.image,
-					ingredients: recipe.ingredients,
-					link: recipe.url
-				},
+				recipe: recipeObj,
 				day: this.state.value
 			});
 			this.props.toggleSaveModule();
 			return;
 		}
+		//if the day is already assigned a menu item ask for confirmation or add it to the day
 		if (this.props.menu[this.state.value]) {
 			this.toggleConfirmation();
 		} else {
 			this.props.triggerRecipeSave({
-				recipe: {
-					label: recipe.label,
-					image: recipe.image,
-					ingredients: recipe.ingredients,
-					link: recipe.url
-				},
+				recipe: recipeObj,
 				day: this.state.value
 			});
 			this.props.toggleSaveModule();
@@ -48,13 +50,19 @@ class RecipeSavingModule extends Component {
 
 	updateDay = () => {
 		const { recipe } = this.props;
+		const recipeObj = {
+			label: recipe.label,
+			cookTime: recipe.cookTime,
+			prepTime: recipe.prepTime,
+			steps: recipe.steps,
+			serves: recipe.serves,
+			category: recipe.category,
+			image: recipe.image,
+			ingredients: recipe.ingredients
+		};
+
 		this.props.triggerRecipeSave({
-			recipe: {
-				label: recipe.label,
-				image: recipe.image,
-				ingredients: recipe.ingredients,
-				link: recipe.url
-			},
+			recipe: recipeObj,
 			day: this.state.value
 		});
 		this.toggleConfirmation();
@@ -67,7 +75,7 @@ class RecipeSavingModule extends Component {
 			return (
 				<div className="confirmation-container">
 					<h3 className="confirm-title">
-						Hey we see that {this.props.menu[this.state.value].title} is already
+						Hey we see that {this.props.menu[this.state.value].label} is already
 						assigned for this day.
 					</h3>
 					<h3 className="confirm-title">

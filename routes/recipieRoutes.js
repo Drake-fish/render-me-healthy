@@ -11,20 +11,10 @@ module.exports = app => {
 	app.post('/recipies', async (req, res) => {
 		console.log(req.body);
 		const { query } = req.body;
-		// try {
-		//   const response = await fetch(`https://api.edamam.com/search?q=chicken&app_id=${keys.recipieAppId}&app_key=${keys.recipieKey}`);
-		//   res.send(response);
-
-		// } catch (err) {
-		//     res.status(422).send(err);
-		// }
-		fetch(
-			`https://api.edamam.com/search?q=${query}&app_id=${
-				keys.recipieAppId
-			}&app_key=${keys.recipieKey}`
-		)
-			.then(res => res.json())
-			.then(json => res.send(json));
+		const recipes = await NewRecipe.find({
+			$text: { $search: query }
+		});
+		res.send(recipes);
 	});
 
 	//save recipe for a User
@@ -32,10 +22,10 @@ module.exports = app => {
 		console.log('RECIPE AT /recipe/save here ', req.body);
 		const { label, image, ingredients, link } = req.body;
 		const recipe = new Recipe({
-			label: label,
-			image: image,
-			ingredients: ingredients,
-			link: link,
+			label,
+			image,
+			ingredients,
+			link,
 			_user: req.user.id
 		});
 		const existingRecipe = await Recipe.findOne({

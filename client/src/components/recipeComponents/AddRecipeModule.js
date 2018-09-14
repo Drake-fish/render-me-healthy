@@ -16,8 +16,10 @@ class AddRecipeModule extends Component {
 		prepTime: '',
 		cookTime: '',
 		recipeCat: '',
+		ingredientFor: '',
 		ingredientList: [],
 		recipeSteps: [],
+		description: '',
 		step: '',
 		error: false
 	};
@@ -34,18 +36,36 @@ class AddRecipeModule extends Component {
 			amount,
 			measure,
 			category,
-			ingredientList
+			ingredientList,
+			ingredientFor,
+			description
 		} = this.state;
 		e.preventDefault();
-		if (commonName && amount && measure && category) {
+		if (
+			commonName &&
+			amount &&
+			measure &&
+			category &&
+			ingredientFor &&
+			description
+		) {
 			ingredientList.push({
 				commonName,
 				amount,
 				measure,
+				ingredientFor,
 				category,
+				description,
 				id: Math.random()
 			});
-			this.setState({ commonName: '', amount: '', measure: '', category: '' });
+			this.setState({
+				commonName: '',
+				amount: '',
+				measure: '',
+				category: '',
+				ingredientFor: '',
+				description: ''
+			});
 		} else {
 			console.log('something not filled out');
 		}
@@ -64,7 +84,7 @@ class AddRecipeModule extends Component {
 				return (
 					<input
 						key={value.name}
-						type="text"
+						type={value.type}
 						value={this.state[value.name]}
 						placeholder={value.placeholder}
 						name={value.name}
@@ -158,7 +178,8 @@ class AddRecipeModule extends Component {
 			image,
 			prepTime,
 			cookTime,
-			recipeSteps
+			recipeSteps,
+			ingredientFor
 		} = this.state;
 		return (
 			<div className="save-db-recipe-module">
@@ -177,13 +198,13 @@ class AddRecipeModule extends Component {
 				<form />
 				<h3>Recipe Steps</h3>
 				<form onSubmit={this.addStep}>
-					<input
+					<textarea
 						type="text"
 						name="step"
 						value={step}
-						placeholder="Enter a Recipe Step"
-						onChange={this.handleChange}
-					/>
+						onChange={this.handleChange}>
+						Enter a Recipe Step
+					</textarea>
 					<button disabled={!step} type="submit">
 						Add
 					</button>

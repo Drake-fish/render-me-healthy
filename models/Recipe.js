@@ -4,8 +4,13 @@ const { Schema } = mongoose;
 const recipeSchema = new Schema({
 	label: String,
 	image: String,
+	description: String,
+	cookTime: String,
+	prepTime: String,
+	serves: Number,
+	steps: Array,
+	category: String,
 	ingredients: Array,
-	link: String,
 	_user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 

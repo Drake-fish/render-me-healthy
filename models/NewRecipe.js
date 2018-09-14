@@ -6,9 +6,11 @@ const newRecipeSchema = new Schema({
 	image: String,
 	cookTime: String,
 	PrepTime: String,
+	serves: Number,
 	ingredients: Array,
 	steps: Array,
-	category: String
-});
+	category: String,
+	description: String
+}).index({ label: 'text' });
 
 mongoose.model('newRecipe', newRecipeSchema);

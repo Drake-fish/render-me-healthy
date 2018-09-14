@@ -1,8 +1,8 @@
 export const formValues = [
-	{ name: 'title', placeholder: 'Recipe Title' },
-	{ name: 'image', placeholder: 'Image Url' },
-	{ name: 'prepTime', placeholder: 'Prep Time' },
-	{ name: 'cookTime', placeholder: 'Cook Time' },
+	{ name: 'title', type: 'text', placeholder: 'Recipe Title' },
+	{ name: 'image', type: 'text', placeholder: 'Image Url' },
+	{ name: 'prepTime', type: 'text', placeholder: 'Prep Time' },
+	{ name: 'cookTime', type: 'text', placeholder: 'Cook Time' },
 	{
 		name: 'recipeCat',
 		options: [
@@ -22,8 +22,15 @@ export const formValues = [
 	}
 ];
 export const ingredientValues = [
-	{ name: 'commonName', placeholder: 'Common name' },
-	{ name: 'amount', placeholder: 'Amount (decimal)' },
+	{ name: 'commonName', type: 'text', placeholder: 'Common name' },
+	{ name: 'description', type: 'text', placeholder: 'Ingredient Attributes' },
+	{
+		name: 'ingredientFor',
+		type: 'text',
+		placeholder: 'What is the ingredient for?'
+	},
+	{ name: 'amount', type: 'number', placeholder: 'Amount (decimal)' },
+
 	{
 		name: 'measure',
 		options: [
@@ -34,21 +41,26 @@ export const ingredientValues = [
 			{ option: 'Medium', value: 'medium' },
 			{ option: 'Large', value: 'large' },
 			{ option: 'Bunch', value: 'bunch' },
-			{ option: 'Ounces', value: 'ounces' }
+			{ option: 'Ounces', value: 'ounces' },
+			{ option: 'Piece', value: 'piece' },
+			{ option: 'Package', value: 'package' },
+			{ option: 'Clove', value: 'clove' },
+			{ option: 'Can', value: 'can' }
 		]
 	},
 	{
 		name: 'category',
 		options: [
-			{ option: 'Vegetable', value: 'vegetable' },
-			{ option: 'Meat', value: 'meat' },
-			{ option: 'Seasoning', value: 'seasoning' },
 			{ option: 'Canned Food', value: 'cannedFood' },
-			{ option: 'Fruit', value: 'fruit' },
 			{ option: 'Dairy', value: 'dairy' },
-			{ option: 'Oil', value: 'oil' },
 			{ option: 'Frozen', value: 'frozen' },
-			{ option: 'Miscellaneous', value: 'miscellaneous' }
+			{ option: 'Fruit', value: 'fruit' },
+			{ option: 'Meat', value: 'meat' },
+			{ option: 'Miscellaneous', value: 'miscellaneous' },
+			{ option: 'Oil', value: 'oil' },
+			{ option: 'Seasoning', value: 'seasoning' },
+			{ option: 'Sauce', value: 'sauce' },
+			{ option: 'Vegetable', value: 'vegetable' }
 		]
 	}
 ];

@@ -37,10 +37,15 @@ module.exports = app => {
 		if (req.body.recipe) {
 			console.log('recipe provided adding! ', req.body);
 			recipe = new Recipe({
-				title: req.body.recipe.title,
+				label: req.body.recipe.label,
+				description: req.body.recipe.description,
+				steps: req.body.recipe.steps,
+				prepTime: req.body.recipe.prepTime,
+				cookTime: req.body.recipe.cookTime,
+				serves: req.body.recipe.serves,
 				image: req.body.recipe.image,
 				ingredients: req.body.recipe.ingredients,
-				link: req.body.recipe.link,
+				category: req.body.recipe.category,
 				_user: req.user.id
 			});
 		} else {

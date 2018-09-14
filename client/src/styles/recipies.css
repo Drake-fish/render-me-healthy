@@ -1,22 +1,135 @@
 .recipe-container {
-  width: 100%;
-  background: #e6e6e6;
-  margin: 1rem 0;
+  width: 90%;
+  box-shadow: -2px 3px 20px 5px lightgrey;
+  margin: 0 auto;
+  transition: .3s ease;
 }
 
 .recipe-image-container {
-  width: 25%;
-  display: inline-block;
+  width: 100%;
+  position: relative;
 }
 
 .recipe-image-container img {
   width: 100%;
 }
 
+.fa-heart, .fa-trash-alt {
+  position: absolute;
+  right: 0;
+  padding: .5rem;
+  margin: .5rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .2);
+  color: white;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.detail-view {
+  width: 100%;
+  transition: .3s ease;
+}
+
+.fa-heart:hover {
+  color: red;
+  background: rgba(0, 0, 0, .3);
+}
+
+.recipe-detail-menu {
+  padding: 0;
+}
+
+.recipe-detail-menu li {
+  display: inline-block;
+  width: 33.33%;
+  text-align: center;
+  list-style: none;
+  padding: .5rem;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
 .recipe-info-container {
-  width: 75%;
+  width: 56%;
   display: inline-block;
   float: right;
+}
+
+.recipe-preview-container {
+  padding: 1rem;
+}
+
+.total-time {
+  float: right;
+  margin-right: 12px;
+}
+
+.recipe-name {
+  margin: .5rem 0;
+  font-size: 1.5rem;
+}
+
+/*
+.recipe-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+} */
+
+/* styles for '...' */
+
+.recipe-description-details {
+  font-family: 'Lato', sans-serif;
+}
+
+.recipe-description {
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative;
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 3.6em;
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;
+  /* place for '...' */
+  margin-right: -1em;
+  padding-right: 3em;
+  font-family: 'Lato', sans-serif;
+}
+
+/* create the ... */
+
+.recipe-description:before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 35px;
+  bottom: 0;
+}
+
+/* hide ... if we have text, which is less than or equal to max lines */
+
+.recipe-description:after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  /* set width and height */
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  /* bg color = bg color under block */
+  background: white;
 }
 
 .recipe-info-container h3 {
@@ -70,6 +183,13 @@
 select {
   display: block;
   margin: 0 auto;
+}
+
+textarea {
+  margin: 0 auto;
+  display: block;
+  width: 85%;
+  margin-bottom: 1rem;
 }
 
 .confirm-button {
